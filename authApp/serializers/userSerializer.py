@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
         userInstance = User.objects.create(**validated_data)
         Account.objects.create(user=userInstance, **accountData)
         return userInstance
-        
+
     def to_representation(self, obj):
         user = User.objects.get(id=obj.id)
         account = Account.objects.get(user=obj.id)
